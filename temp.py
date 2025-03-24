@@ -18,19 +18,25 @@ def start():
 
 
 def stop():
-    global tf, running
-    tf = time.time()
+    global running
     running = False
-    # n = tk.Toplevel(m)
+
+
+def disp_curent():
+    global tf
+    tf = time.time()
     w.config(text=sec_to_time(tf, ti))
 
 
 m = tk.Tk()
 m.title("Stopwatch")
-b1 = tk.Button(m, text="Start", command=lambda: start())
+b1 = tk.Button(m, text="Start", command=start)
 w = tk.Label(m, text="0:0:0:000")
 w.pack()
 b1.pack()
-b2 = tk.Button(m, text="Stop", command=lambda: stop())
+b2 = tk.Button(m, text="Stop", command=stop)
 b2.pack()
+while running:
+    time.sleep(0.001)
+    disp_curent()
 m.mainloop()

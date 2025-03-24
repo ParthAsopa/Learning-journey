@@ -15,22 +15,25 @@ def start():
     global ti, running
     ti = time.time()
     running = True
+    w.config(text="0:0:0:000")
 
 
 def stop():
     global tf, running
     tf = time.time()
     running = False
-    # n = tk.Toplevel(m)
     w.config(text=sec_to_time(tf, ti))
 
 
 m = tk.Tk()
+width = m.winfo_screenwidth()
 m.title("Stopwatch")
-b1 = tk.Button(m, text="Start", command=lambda: start())
+b1 = tk.Button(m, text="Start", command=start)
 w = tk.Label(m, text="0:0:0:000")
-w.pack()
-b1.pack()
-b2 = tk.Button(m, text="Stop", command=lambda: stop())
-b2.pack()
+w.grid(row=0, column=0, sticky="nsew", columnspan=2)
+b1.grid(row=1, column=0, sticky="nsew")
+b2 = tk.Button(m, text="Stop", command=stop)
+b2.grid(row=1, column=1, sticky="nsew")
+m.columnconfigure(0, minsize=(width / 2))
+m.columnconfigure(1, minsize=(width / 2))
 m.mainloop()
