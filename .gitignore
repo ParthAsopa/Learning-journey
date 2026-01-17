@@ -1,7 +1,10 @@
 Java/Java_Complete_Notes.pdf
 *.class
 Web-Development/Course Status.txt
-Web-Development/download.jpg
+*.jpg
 Web-Development/download(1).jpg
 C/C_Complete_Notes.pdf
 *.exe
+Python/Python Notes.pdf
+.vscode/
+__pycache__/
